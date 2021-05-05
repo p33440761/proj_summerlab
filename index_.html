@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summerlab</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;1,100&family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+        <link rel="shortcut icon" href="logo16_16.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', 'Noto Sans TC', sans-serif;
+            letter-spacing: 0.1rem;
+            
+        }
+        .bigbox{
+            max-width: 100vw;
+            overflow: hidden;
+        }
+        body {
+            background: #d9d4cf;
+            transition: 1s;
+            
+        }
+
+        .logo img {
+            width: 70px;
+
+        }
+
+        .navbar {
+            position: absolute;
+            width: 100%;
+
+        }
+
+        .navbar-dark .navbar-toggler {
+            color: rgba(255, 255, 255);
+            border-color: transparent;
+        }
+
+        /* .navbar-nav{
+            margin-right: 0;
+        } */
+        .navbar-nav li {
+            margin-right: 50px;
+            font-size: 1.5rem;
+            transition: .5s;
+            border-bottom: 1px solid transparent;
+            text-align: center;
+            margin: 0 auto;
+            cursor: pointer;
+            /* 網頁版拿掉margin */
+
+        }
+
+        .navbar-nav li:hover {
+            border-bottom: 1px solid #fff;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .navbar-nav .nav-link {
+            color: rgba(225, 225, 225) !important;
+        }
+
+        .navbar-toggler:focus,
+        .navbar-toggler:active,
+        .navbar-toggler-icon:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        .visuallyHidden {
+            position: absolute;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            height: 1px;
+            width: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+        }
+
+        .hamburger {
+            margin: 0 auto;
+            /* margin-top: 30px; */
+            width: 30px;
+            height: 30px;
+            position: relative;
+        }
+
+        .hamburger .bar {
+            padding: 0;
+            width: 30px;
+            height: 1px;
+            background-color: #fff;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.4s ease-in-out;
+            position: absolute;
+        }
+
+        .bar1 {
+            top: 0;
+        }
+
+        .bar2,
+        .bar3 {
+            top: 13.5px;
+        }
+
+        .bar3 {
+            right: 0;
+        }
+
+        .bar4 {
+            bottom: 0;
+        }
+
+        .hamburger3 .bar1 {
+            transform-origin: 5%;
+        }
+
+        .hamburger3 .bar4 {
+            transform-origin: 5%;
+        }
+
+        .checkbox3:checked+label>.hamburger3>.bar1 {
+            transform: rotate(45deg);
+            height: 1px;
+            width: 42px;
+        }
+
+        .checkbox3:checked+label>.hamburger3>.bar3 {
+            transform: rotate(45deg);
+            /* height: 3px; */
+            background-color: transparent;
+        }
+
+        .checkbox3:checked+label>.hamburger3>.bar2 {
+            transform: rotate(-45deg);
+            /* height: 3px; */
+            background-color: transparent;
+        }
+
+        .checkbox3:checked+label>.hamburger3>.bar4 {
+            transform: rotate(-45deg);
+            height: 1px;
+            width: 42px;
+        }
+
+        .banner {
+            position: relative;
+            z-index: -1;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100vh;
+            background: url(./images/banner/banner-after.png) center center/cover;
+        }
+
+        .banner-txt {
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner-txt h1 {
+            text-align: center;
+            font-size: 48px;
+            color: #fff;
+            transition: .5s;
+            /* transform: translateX(-1800px); */
+            animation: animate-fade-in 3s ease-in forwards;
+            font-style: italic;
+
+        }
+
+        .banner-txt small {
+            font-size: 16px;
+            display: block;
+        }
+
+        .arrow-wave {
+            display: inline-block;
+            cursor: pointer;
+            /* margin-top: 100px; */
+            font-size: 0;
+            position: absolute;
+            right: 5%;
+            top: 90%;
+            /* background-color: rgba(100, 100, 100, 0.4); */
+        }
+
+        .arrow-wave span {
+            display: block;
+            position: relative;
+            height: 20px;
+            width: 20px;
+            /*   background-color: rgba(100,100,100,0.4); */
+            opacity: 0.2;
+        }
+
+        .arrow-wave span::before,
+        .arrow-wave span::after {
+            display: block;
+            content: "";
+            position: absolute;
+            height: 2px;
+            width: 14px;
+            background-color: #fff;
+        }
+
+        .arrow-wave span::before {
+            top: -5px;
+            left: 0;
+            transform-origin: left center;
+            transform: rotate(45deg);
+        }
+
+        .arrow-wave span::after {
+            top: -5px;
+            right: 0;
+            transform-origin: right center;
+            transform: rotate(-45deg);
+        }
+
+        .arrow-wave span:nth-child(1n) {
+            animation: animate-arrow-wave 2s infinite;
+            animation-delay: .25s;
+        }
+
+        .arrow-wave span:nth-child(2n) {
+            animation: animate-arrow-wave 2s infinite;
+            animation-delay: .50s;
+        }
+
+        .arrow-wave span:nth-child(3n) {
+            animation: animate-arrow-wave 2s infinite;
+            animation-delay: .75s;
+        }
+
+        @keyframes animate-arrow-wave {
+            0% {
+                opacity: 0.2;
+            }
+
+            25% {
+                opacity: 0.2;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            75% {
+                opacity: 1.0;
+            }
+
+            100% {
+                opacity: 0.2;
+            }
+        }
+
+        @keyframes animate-fade-in {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+                /* transform: translateX(0px); */
+            }
+        }
+
+        .concept {
+            width: 100%;
+            background: #7C7877;
+            position: relative;
+        
+        }
+
+        .title {
+            position: absolute;
+            z-index: 1;
+            /* left: 10%; */
+            top: 5%;
+        }
+
+        .title a {
+            font-size: 36px;
+            color: #7C7877;
+            text-decoration: none;
+            font-weight: 900;
+        }
+
+        .title a::after {
+            content: '';
+            display: inline-block;
+            width: 100px;
+            height: 1px;
+            background: #7C7877;
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+        #conceptline a {
+            color: #ccc;
+        }
+        #conceptline a::after{
+            background: #ccc;
+        }
+        
+        .row {
+            width: 90%;
+            height: 100%;
+            background: #7C7877;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+
+
+
+        }
+
+        .select-area {
+            /* background: red; */
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-content: space-around;
+            margin-top: 100px;
+
+        }
+
+        .circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+
+            /* background: chartreuse; */
+            border: 1px solid #fff;
+            transition: .5s;
+            overflow: hidden;
+        }
+
+        .circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .scaleup {
+            transform: scale(1.2);
+        }
+
+        .moveleft {
+            transform: translateX(-30%);
+        }
+
+        .moveright {
+            transform: translateX(30%);
+        }
+
+        .story-area {
+            /* background: aqua; */
+            height: 350px;
+            position: relative;
+        }
+
+        .story-txt {
+
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            transition: 1s;
+            color: #fff;
+        }
+
+        .story-txt h4 {
+            font-weight: 100;
+        }
+
+        .story-txt p {
+            font-weight: 100;
+        }
+
+        .opcacityfill {
+            opacity: 1;
+        }
+
+        .opcacityblur {
+            opacity: 0;
+        }
+
+        .product {
+            width: 100%;
+            /* height: 100%; */
+            position: relative;
+            /* padding-bottom: 50px; */
+            background: #d9d4cf;
+        }
+
+        .title-bg {
+            position: relative;
+            background: #d9d4cf;
+            height: 100px;
+
+        }
+
+        #productline {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(0, -50%);
+            
+        }
+
+        .item {
+            padding-top: 50px;
+        }
+
+        .bg-change {
+            background: #7C7877;
+        }
+        .product-wrap{
+            color:#363433;
+        }
+        .product-num h3 {
+            text-align: center;
+            font-family: 'Noto Sans TC';
+            font-weight: 700;
+        }
+
+        .product-name small {
+            display: block;
+            height: 40px;
+        }
+
+        .product-name {
+            text-align: center;
+        }
+        .product-name h3{
+            font-weight: 600;
+            letter-spacing: 0rem;
+        }
+        .product-lead {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .product-show {
+            width: 100%;
+            height: 300px;
+
+        }
+
+        .product-show img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-discription {
+            width: 90%;
+            margin: 0 auto;
+            /* text-align: center; */
+            padding:20px;
+            color: #363433;
+        }
+
+        .product-discription p {
+            margin-top: 1rem;
+            font-family: 'Noto Sans TC';
+        }
+        dl{
+            color: #363433;
+        }
+        .product-demo {
+            width: 100%;
+            height: 200px;
+            position: relative;
+
+        }
+
+        .product-demo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            padding: 1rem;
+
+        }
+
+        .product-main-txt {
+            width: 100%;
+            position: relative;
+            margin-top: 20px;
+
+
+        }
+
+        .main-title {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+        }
+
+        .main-title h5 {
+            font-weight: 700;
+            font-family: 'Noto Sans TC';
+            color: #646161;
+        }
+
+        .product-table {
+            display: table;
+            width: 90%;
+            margin: 0 auto;
+            background: #ABD0CE;
+            padding: 20px 10px;
+
+
+
+        }
+
+        .product-detail {
+            display: table-row-group;
+
+        }
+
+        .product-detail dt {
+            display: table-cell;
+            width: 8em;
+            line-height: 2;
+            padding-bottom: 5px;
+            font-weight: 400;
+            font-family: 'Noto Sans TC';
+
+        }
+
+        dd {
+            font-family: 'Noto Sans TC';
+        }
+
+        .product-bottom {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 10px;
+        }
+
+        .product-buy {
+            width: 100%;
+            /* margin: 150px 0; */
+            height: 470px;
+            margin-top: 50px;
+
+        }
+
+        .box {
+            position: relative;
+            transform: translateY(-35%);
+            display: flex;
+            flex-direction: column;
+
+
+        }
+
+        .box h5 {
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            width: 50%;
+            margin: 0 auto;
+            color: #7C7877;
+            padding-bottom: 10px;
+            font-weight: 700;
+            font-size: 24px;
+            /* font-family: 'Noto Sans TC'; */
+        }
+        .product02-wrap{
+            color:#fdf1e9 ;
+        }
+        .product02-discription{
+            color:#fdf1e9 ;
+            font-weight: 100;
+        }
+        .product02-box h5{
+            color:#fdf1e9;
+            
+        }
+        .product02-main-title h5{
+            color:#fdf1e9;
+        }
+        .product-buy-bg {
+            width: 100%;
+            background: #7C7877;
+            height: 150px;
+            /* position: relative; */
+            transform: translateY(50%);
+
+        }
+        .product02-buy-bg{
+            background: #d9d4cf;
+        }
+        .product03-wrap{
+            color:#363433;
+        }
+        .product-buy-img {
+
+            width: 250px;
+            height: 300px;
+            margin: 20px auto;
+
+        }
+        .product-buy-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .product-price {
+            background: #fdf1e9;
+            width: 50%;
+            margin: 0 auto;
+            /* transform: translate(-50%, -50%); */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* position: absolute;
+            top: 100%;
+            left: 50%; */
+            color: #615e5d;
+            padding: 1rem;
+            font-family: 'Noto Sans TC';
+            font-weight: 700;
+            transition: .5s;
+        }
+        .hoverbuy{
+            background:#ABD0CE;
+            /* -webkit-filter: drop-shadow(3px 3px 3px #333); */
+
+            
+        }
+
+
+        .feature {
+            width: 100%;
+            
+            background: #F0E5DE;
+            position: relative;
+            padding-bottom: 70px;
+
+        }
+
+        #featureline {
+
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(0, -50%);
+        }
+        .feature-title{
+            background: #F0E5DE;
+        }
+
+        .feature-group {
+            height: 1300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .feature01 {
+            width: 90%;
+            height: 400px;
+            background: #ABD0CE;
+            margin: 0 auto;
+
+        }
+
+        .demo {
+            height: 40%;
+            background: #F0E5DE;
+            /* background: url(./images/feature/feature1.jpg)0 40%/cover; */
+
+
+            position: relative;
+
+        }
+        .demo-img{
+            width: 100%;
+            height: 100%;
+        }
+        .demo-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 10% 30%;  
+        }
+
+        .demo01 {
+            height: 40%;
+            background: #ccc;
+            /* background: url(./images/feature/feature2.jpg) 0 40% /cover; */
+            position: relative;
+
+        }
+
+        .demo02 {
+            height: 40%;
+            background: #ccc;
+            /* background: url(./images/feature/feature3.png) 0 40%/cover; */
+            position: relative;
+        }
+
+        .demo h3 {
+            color: #fff;
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        .demo01 h3 {
+            color: #fff;
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        .demo02 h3 {
+            color: #fff;
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%)
+        }
+
+        .demo-txt {
+            height: 60%;
+            /* background: #333; */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .demo-txt small {
+            display: block;
+            font-weight: 100;
+            transition: .5s;
+            margin-top: 25px;
+        }
+
+        .demo-txt h3 {
+            color: #474544;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 100;
+            width: 100%;
+            transition: 1s;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+
+        }
+
+        .demo-txt a {
+            color: #474544;
+            position: absolute;
+            top: 90%;
+            left: 130%;
+            transform: translate(-60%, -50%);
+            font-weight: 900;
+            width: 100%;
+            transition: 1s;
+           
+
+        }
+
+        .overlay {
+
+            background: #7C7877;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: 1s ease-out;
+            transform: translateX(100%);
+        }
+
+        .overlaymove {
+            transform: translateX(0px);
+        }
+
+        .detail {
+            color: transparent;
+            font-size: 16px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            width: 100%;
+            font-weight: 100;
+            letter-spacing: 0.2rem;
+            padding: 20px;
+            transition: 7s;
+        }
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 30px; /* Place the button at the bottom of the page */
+            right: 10px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: rgba(255, 255, 255, 0.438); /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50%; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+            width: 50px;
+            height: 50px;
+            transition: .5s;
+          
+        }
+
+        #myBtn:click {
+            
+            text-decoration: none;
+        
+        }
+        
+
+        .contact {
+            width: 100%;
+            height: 550px;
+            position: relative;
+            background: #ece9e3;
+            border: 1px solid #ece9e3;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: 30px;
+        }
+
+        .footer-logo {
+            width: 70px;
+            height: 70px;
+        }
+
+        .footer-logo img {
+            width: 100%;
+            height: 100%;
+
+        }
+
+        #contact-bg {
+            background: #ece9e3;
+            
+        }
+
+        #contactline {
+            position: absolute;
+            top: 40%;
+            right: 0;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            /* position: absolute;
+            top: 60%;
+            left: 50%; */
+            /* transform: translate(-50%,-50%); */
+        }
+
+        .footer-navbar {
+            margin-top: 30px;
+        }
+
+        .footer-link {
+            border: 1px solid transparent;
+            transition: .5s;
+        }
+
+        .footer-link a {
+            text-decoration: none;
+            color: #7C7877;
+        }
+
+        .footer-contact {
+            width: 100%;
+            height: auto;
+            margin-bottom: 50px;
+
+
+        }
+
+        .footer-phone {
+            width: 60%;
+            margin: 0 auto;
+            height: 100%;
+            /* border: 1px solid #7C7877; */
+            background: #7C7877d7;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 30px;
+            color: #fff;
+            margin-bottom: 10px;
+            /* position: relative; */
+            transition: 1s;
+
+
+        }
+        .footer-phone i {
+            color:#363433;
+            padding-right: 10px;
+
+        }
+
+        .footer-email i {
+            color:#363433;
+            padding-right: 10px;
+
+        }
+
+        .footer-phone p {
+
+            display: inline-block;
+            font-weight: 900;
+            color:#363433;
+        }
+
+        .footer-email p {
+            color:#363433;
+            display: inline-block;
+        }
+
+        .footer-email {
+            width: 60%;
+            margin: 0 auto;
+            /* height: 100%; */
+            /* border: 1px solid #7C7877; */
+            background: #7C7877d7;
+            text-align: center;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 30px;
+            color: #fff;
+            font-weight: 700;
+
+        }
+      
+        .footer-navbar{
+            font-weight: 700;
+        }
+        .social {
+            width: 100%;
+            background: #d9d4cf;
+            height: 100px;
+        }
+
+        .social-icon {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            line-height: 100px;
+        }
+
+        .social-icon i {
+            font-size: 24px;
+            color: #7C78777e;
+        }
+
+        .contact .to-top {
+            /* display: block; */
+            width: 50px;
+            height: 50px;
+            border: 1px solid #7C7877;
+            border-radius: 50%;
+            margin: 0 auto;
+            text-decoration: none;
+        }
+
+        .to-top i {
+            text-align: center;
+            color: #7C7877;
+            display: block;
+            line-height: 20px;
+
+        }
+        .product03-demo-img img{
+            object-position: 20% 49%;
+        }
+
+        @media (min-width: 992px) {
+            .logo img {
+            width: 100px;
+
+        }
+            .navbar-nav li {
+            margin-right: 50px;
+            font-size: 1.5rem;
+            transition: .5s;
+            border-bottom: 1px solid transparent;
+            text-align: center;
+        }
+        .banner-txt h1 {
+            font-size: 96px;
+        }
+
+        .banner-txt small {
+            font-size: 24px;
+        }
+        .title {
+            position: absolute;
+            z-index: 1;
+            top: 30%;
+            left:-2%;
+            transform: rotate(90deg);
+        }
+        .title a {
+            font-size: 48px;
+            
+        }
+
+        .title a::after {
+            content: '';
+            display: inline-block;
+            width: 100px;
+            height: 1px;
+            background: #7C7877;
+            margin-left: 15px;
+            margin-bottom: 10px;
+        }
+        #conceptline a {
+            color: #ccc;
+        }
+        #conceptline a::after{
+            background: #fff;
+        }
+        .select-area {        
+            margin-top: 0;
+        }
+
+        .right{
+            order:0;
+        }
+        .left{
+            order:-1;
+            padding-bottom: 100px;
+        }
+        .concept{
+            height: 600px;
+        }
+        .select-area {
+            width: 70%;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-content: space-around;
+        }
+
+        .circle {
+            width: 120px;
+            height: 120px;
+        }
+        .story-area {
+            /* height: 300px; */
+            position: relative;
+            width: 70%;
+        }
+        .row{
+            padding-left: 250px;
+        }
+
+        .story-txt h4 { 
+            font-size: 48px;
+        }
+
+        .story-txt p {
+            font-size: 24px;
+        }
+        .title-bg {
+            height: 200px;
+        }
+        #productline {
+            top: 100%;
+            left: 80%;
+            transform: rotate(90deg);            
+        }
+        .product-title{
+            position: relative;
+            width: 100%;
+            height: 900px;
+        }
+        .product-wrap{
+            position: absolute;
+            width: 30%;
+            top: 20%;
+            left:55%;
+            color:#363433;
+            /* transform: translate(140%,0); */
+            /* transform:translate(-50%,-50%) */
+        }
+        
+        .product-num h3 {
+            font-family: 'Noto Sans TC';
+            font-weight: 700;
+            font-size: 48px;
+        }
+
+        .product-name small {
+            height: 40px;
+        }
+        .product-name h3{
+            letter-spacing: 0.1rem;
+            font-size: 48px;
+        }
+        .product-lead {
+            width: 80%;
+            margin: 20px auto;
+            font-size: 22px;
+        }
+        .product-show {
+            width: 40%;
+            height: 800px;
+            margin-left: 50px;
+            transform: translate(20%,0);
+        }
+
+        .product-discription {
+            width: 20%;
+            margin: 0 auto;
+            text-align: center;
+            padding:20px;
+            transform: translate(100%,-130%);
+        }
+
+        .product-discription p {
+            font-size: 18px;
+            font-family: 'Noto Sans TC';
+            color: #363433;
+        }
+        .product-main{
+            width: 100%;
+            /* height: 1200px; */
+        }
+        .product-demo {
+            width: 50%;
+            height: 550px;
+            position: relative;
+            transform: translate(80%,-35%);
+            z-index: 1;
+
+        }
+
+        .product-main-txt {
+            width: 100%;
+            position: relative;
+            margin-top: 20px;
+            transform: translate(-18%,-70%);
+
+
+        }
+
+        .main-title {
+
+            transform: translate(-210%, 1000%) rotate(270deg);
+            
+        }
+
+        .main-title h5 {
+            font-weight:700;
+            font-family: 'Noto Sans TC';
+            color:#646161
+        }
+
+        .product-table {
+            display: table;
+            width: 25%;
+            /* height: 500px; */
+            margin: 0 auto;
+            background: #ABD0CE;
+            padding: 50px;
+        }
+
+        .product-detail dt {
+            
+            width: 10em;
+            line-height: 4;
+            padding-bottom: 0px!important;
+        }
+        dl{
+            color: #383A3F;
+        }
+        dd {
+            font-family: 'Noto Sans TC';
+        }
+
+        .product-bottom {
+            width: 40%;
+            transform: translate(100%,-90%);
+        }
+
+        .product-buy{
+            transform: translate(0,-150%);
+        }
+        /* 背景漸層 */
+        .product-buy-bg {
+            width: 60%;
+            height: 550px;
+            transform: translate(0,70%);
+            margin:0 auto;
+            position: relative;
+            background-color: transparent;
+            background-image: linear-gradient(to right, #7C7877, #7C7877);
+            background-size: 0;
+            background-repeat: no-repeat;
+            border: transparent;
+            transition: all 0.5s ease
+        }
+
+        
+
+        .product-buy-img {
+        width: 650px;
+        height: 700px;
+        margin: 20px auto;
+        }
+        .product02-buy{
+            transform: translate(0,-140%);
+        }
+
+        .box h5{
+            font-size: 48px;
+            font-weight: 700;
+            width: 30%;
+            border: none;
+            font-family: 'Noto Sans TC';
+            position: absolute;
+            left: 15%;
+            top: 40%;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .product-price {
+            background: #fdf1e9;
+            width: 15%;
+            height: 200px;
+            margin: 0 auto;
+            color: #615e5d;
+            padding: 1rem;
+            position: absolute;
+            left: 62%;
+            top:80%;
+            opacity: 1;
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: .5s ease;
+        }
+        .hoverbuy{
+            background:#ABD0CE;
+            filter: -webkit-drop-shadow(3px 3px 3px #333);
+
+            
+        }
+        .product02-wrap{
+            position: absolute;
+            width: 30%;
+            top: 15%;
+            left:55%;
+            color:#fdf1e9;
+        }
+        .product03-wrap {
+            color: #383A3F;
+        }
+        .product02-show{
+            margin-top: 70px;
+            
+        }
+        .product02-discription{
+            transform: translate(105%,-120%);
+             
+        }
+        .product02-discription p{
+            color:#fdf1e9;
+            font-weight: 100;
+             
+        }
+        .product02-main-title{
+            transform: translate(-210%, 800%) rotate(270deg);
+            color: #7C7877;
+        }
+        .product02-main-title h5{
+            
+            color: #363433;
+        }
+        .product02-buy-bg{
+            background-color: transparent;
+            background-image: linear-gradient(to right, #d9d4cf, #d9d4cf);
+            background-size: 0;
+            background-repeat: no-repeat;
+            border: transparent;
+            transition: all 0.5s ease
+        
+        }
+        
+        .product02-box h5{
+            color:#7C7877;
+        }
+        .product03-discription{
+            transform: translate(100%,-200%);
+        }
+        .product03-main-title{
+            transform: translate(-210%, 600%) rotate(270deg);
+            color: #363433;
+        }
+        .feature01 {
+            width: 100%;
+            height: 550px;
+            background: #ABD0CE;
+            margin: 0 auto;
+            display: flex;
+            /* border-bottom: 1px solid #fff; */
+
+        }
+        .demo {
+            width: 70%;
+            height: 100%;
+            background: #F0E5DE;
+            position: relative;
+
+        }
+        .demo h3{
+            display: none;
+        }
+        .demo-img{
+            width: 60%;
+            height: 80%;
+            margin: 50px 30%;
+        }
+        /* .demo-img img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 10% 50%;  
+        } */
+        /* 動畫 */
+        .demo-txt {
+            width: 30%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        
+
+        .demo-txt h3 {            
+            font-size: 30px;
+        }
+
+        .demo-txt a {           
+            font-size: 24px;
+          
+        }
+
+        .overlay {
+            background: #7C7877;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            transition: 1s ease-out;
+            transform: translateX(100%);
+        }
+        .overlay p{
+            width: 70%;
+            font-size: 24px;
+        }
+        .overlaymove {
+            transform: translateX(0px);
+        }
+
+        .product02-demo{
+            order: 0;
+        }
+
+        .product02-demo-txt{
+            order: -1;
+        }
+
+        .product02-demo-img{
+            margin: 50px 10%;
+        }
+        .product03-main-txt {
+            width: 100%;
+            position: relative;
+            margin-top: 20px;
+            transform: translate(-18%,-100%);
+
+
+        }
+        .feature{
+            transform: translateY(10%);
+            height: 1640px;
+            
+        }
+        /* 問題 */
+        #featureline {
+            top: 100%;
+            left: 0;
+            transform: rotate(90deg);
+        position: absolute;
+        
+        }
+        .feature-title{
+            background: #F0E5DE;
+        }
+      
+        #contact-bg {
+            background: #ece9e3;
+            position: relative;
+            height: 100px;
+        }
+
+        #contactline {
+            position: absolute;
+            top:300%;
+            left: 80%;
+            width: 30%;
+        }
+        .contact{
+            position: relative;
+            /* transform: translateY(-20%); */
+            /* height: 600px; */
+        }
+        .footer-contact{
+            display: flex;
+            position: relative;
+            width: 60%;
+            margin: 0 auto 50px;
+        }
+        /* .footer-phone:hover {
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+        }
+        .footer-email:hover {
+            border-bottom: 1px solid #000;
+            padding-bottom: 10px;
+        } */
+        .footer-phone{
+            height: 100%;
+            background: transparent;
+            color: #363433;
+            font-size: 24px;
+            border-radius: 0;
+            border-bottom: 1px solid transparent;
+            transition: .5s;
+            
+        }
+        .footer-phone::after{
+            content: "";
+            display: block;
+            width: 1px;
+            height: 80px;
+            background: #7C7877;
+            /* margin-left: 15px;
+            margin-bottom: 10px; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+        }
+
+        .footer-phone i{
+            font-size: 24px;
+            color: #363433;
+        }
+        .footer-email{
+            height: 100%;
+            background: transparent;
+            color: #363433;
+            font-size: 24px;
+            border-radius: 0;
+            border-bottom: 1px solid transparent;
+            transition: .5s;
+            
+        }
+        .footer-email i{
+            font-size: 24px;
+            color: #363433;
+        }
+        .footer-navbar ul{
+            display: flex;
+            flex-direction: row;
+        }
+        .footer{
+            margin:50px 0;
+        }
+        .footer-navbar ul li{
+            font-size: 24px;
+            margin: 0 30px;
+            cursor: pointer;
+        }
+        .navbar-nav li:hover {
+
+            font-size: 28px;
+        }
+        .social-icon i {
+            font-size: 48px;
+        }
+        .social {
+            width: 100%;
+            background: #d9d4cf;
+            height: 120px;
+        }
+
+        .social-icon {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            /* line-height: 100px; */
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 50px; /* Place the button at the bottom of the page */
+            right: 50px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #fff; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50%; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+            width: 70px;
+            height: 70px;
+            transition: .5s;
+        }
+
+        #myBtn:hover {
+        background-color: #555; /* Add a dark-grey background on hover */
+        text-decoration: none;
+        
+        }
+        .to-top i {
+            text-align: center;
+            color: #7C7877;
+            display: block;
+            line-height: 40px;
+
+        }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="bigbox">
+        <nav class="navbar navbar-expand-lg navbar-dark mt-3 ">
+            <a href="#" class="logo ml-lg-5 "><img src="./images/logo/logo-light.svg"></a>
+    
+            <button class="navbar-toggler justify-content-lg-end" type="button" data-toggle="collapse"
+                data-target="#summer-navbar">
+                <input type="checkbox" id="checkbox3" class="checkbox3 visuallyHidden">
+                <label for="checkbox3">
+                    <div class="hamburger hamburger3">
+                        <span class="bar bar1"></span>
+                        <span class="bar bar2"></span>
+                        <span class="bar bar3"></span>
+                        <span class="bar bar4"></span>
+                    </div>
+                </label>
+            </button>
+    
+            <div class="collapse navbar-collapse justify-content-lg-end" id="summer-navbar">
+                <ul class="navbar-nav mr-lg-3" id="main-menu">
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section02" >CONCEPT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productline">PRODUCT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#featureline">FEATURE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contactline">CONTACT</a>
+                    </li>
+                </ul>
+    
+            </div>
+        </nav>
+        <section class="banner">
+            <div class="wrap">
+                <div class="banner-txt">
+                    <h1>Summer Lab
+                        <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, unde.</small>
+                    </h1>
+                </div>
+            </div>
+            <div class="arrow-wave">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </section>
+        <section class="concept " id="section02">
+            <div class="title" id="conceptline"><a href="#">Concept</a></div>
+            <div class="row ">
+                <div class="col-12 col-lg-6 right">
+                    <div class="select-area ">
+                        <div class="up d-flex flex-row justify-content-around">
+                            <div class="circle"></div>
+                            <div class="circle" id="rock"><img src="./images/circle/circle1.jpg"></div>
+                            <div class="circle"></div>
+                            <div class="circle" id="candle"><img src="./images/circle/circle2.jpg"></div>
+                        </div>
+                        <div class="down d-flex flex-row justify-content-around">
+                            <div class="circle" id="soap"><img src="./images/circle/circle3.jpg"></div>
+                            <div class="circle"></div>
+                            <div class="circle" id="about-us"><img src="./images/circle/circle4.jpg"></div>
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 left">
+                    <div class="story-area">
+                        <div class="wrap-story">
+                            <div class="story-txt" id="txt01">
+                                <h4 class="pt-5">Crystal Mood Aroma </h4>
+                                <h4>晶石香薰</h4>
+                                <p class="mt-3">
+                                    植物香氣與晶石能量的神祕邂逅。採集世界各地的各色晶石蘊含著磁場和能量，為你帶來積極正向的影響。滴入精油，帶你打開玻璃罩千里外的島嶼、森林、茶山、花田氣息撲面而來。願你的世界每天都花木繁盛，草葉欣榮。
+                                </p>
+                            </div>
+                            <div class="story-txt" id="txt02">
+                                <h4 class="pt-5">Scent Wood Wick Candle</h4>
+                                <h4>木芯香薰蠟燭 </h4>
+                                <p class="mt-3">
+                                    氤氳的香霧在蒸騰上百年的黃銅老鍋裡升騰而起，任工業文明怎麼發展，格拉斯人都堅守於此。慢，但是純粹。這杯令人平靜的白噪音香薰蠟燭，點燃他，你不會聞到化學處理過的異味，木芯噼趴燃燒的聲音，有如在壁爐旁聆聽一場雨。
+                                </p>
+                            </div>
+                            <div class="story-txt" id="txt03">
+                                <h4 class="pt-5">Shea Butter Dry Pefume</h4>
+                                <h4>乳木果香膏</h4>
+                                <p class="mt-3">
+                                    橫跨非洲乳木果生長帶，15-20年才開始結果，果樹自然散落在原野間。這枚香膏使用了天然乳木果成分，與我們的肌膚表面的油紙性質接近，滲透吸收軟化皮質角質，對皮膚滋潤度極佳。不僅可以用作隨身香氛，也可以拿來滋潤乾燥肌膚。
+                                </p>
+                            </div>
+                            <div class="story-txt" id="txt04">
+                                <h4 class="pt-5">About Us</h4>
+                                <h4>關於我們</h4>
+                                <p class="mt-4">
+                                    時間為柴，自然為料。挖掘中國人記憶的情意結，做好原創東方植物香是觀夏的初衷。立足東方，擁有國際化視野的主創團隊善用全球簽約農場萃取的天然植物花蠟、精油、提取物成分調和創香。最好作品，都由光陰創作。只予願意等待、認真生活之人。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="title-bg">
+            <div class="title" id="productline"><a href="#">Product</a></div>
+        </div>
+        <section class="product" id="section03">
+            <div class="product-group">
+                <div class="item ">
+                    <div class="product-title">
+                        <div data-bottom-top=" transform:translate(0,-100%);" data-center-top="transform:translate(0,0)" class="product-wrap">
+                            <div class="product-num">
+                                <h3>01</h3>
+                            </div>
+                            <div class="product-name">
+                                <h3>Crystal Mood Aroma<small>雪融白茶</small></h3>
+                            </div>
+                            <div class="product-lead">
+                                <p>來自香調雪融白茶 白茶雪松木質香氣</p>
+                            </div>
+                        </div>
+                        <div data-bottom-top=" transform:translate(-110%,0);opacity: 0" data-center-top="transform:translate(20%,0); opacity: 1"  class="product-show" ><img src="./images/product/product-detail-carosel/rock/product01.png"></div>
+                        <div data-bottom-top=" transform:translate(100%,-50%);" data-center-top="transform:translate(100%,-130%)" class="product-discription">
+                            <p>弗吉尼亞西部的藍岭山脈冬寒夏涼，大片野生雪松是觀夏全線雪松香氣的源頭，觀夏茶香源於原產福鼎的銀針白毫。白色晶石來自於南非開普敦，最純粹的能量可激發潛能，能讓人們回歸最佳狀態來應對身邊所有事情。每1kg中手工篩出100g。配上映村白晶石、六稜水晶，平凡世界獨此一瓶。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="product-main"  >
+                        <div data-bottom-top="opacity: 0" data-center-top=" opacity: 1"  class="product-demo"><img src="./images/product/product-detail-carosel/rock/product2.jpeg"></div>
+                        <div data-bottom-top=" transform:translate(-18%,-10%);" data-center-top="transform:translate(-18%,-70%)" class="product-main-txt">
+                            <div class="main-title">
+                                <h5>DISCRIPTION</h5>
+                            </div>
+                            <div class="product-table">
+                                <dl class="product-detail">
+                                    <dt>主擴香石:</dt>
+                                    <dd>白晶石</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>拼配擴香石:</dt>
+                                    <dd>透明水晶、六稜水晶</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>克重:</dt>
+                                    <dd>500g</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>產地:</dt>
+                                    <dd>南非</dd>
+                                </dl>
+                                <dl class="product-detail ">
+                                    <dt>使用期:</dt>
+                                    <dd>永久使用</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>香薰油容量:</dt>
+                                    <dd>10ml*2</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>建議使用量:</dt>
+                                    <dd>每次5-10滴，可根據個人喜好增減</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>材質:</dt>
+                                    <dd>手作玻璃金鐘罩*1</dd>
+                                    <dd>手作玻璃底座*1</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>尺寸:</dt>
+                                    <dd>160*105mm</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="product-buy">
+                            <div  data-bottom-top=" background-size:0" data-center-top="background-size:100%" class="product-buy-bg"></div>
+                            <div class="box">
+                                <h5>Let it go</h5>
+                                <div data-bottom-top=" transform:scale(0.5);opacity:0" data-center-top="transform:scale(1);opacity:1" class="product-buy-img">
+                                    <img src="./images/product/product-detail-carosel/rock/product03.png">
+                                </div>
+                                <div class="product-price">
+                                    <p>$ 1320 NTD</p>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 二 -->
+                <div class="item bg-change">
+                    <div class="product-title">
+                        <div data-bottom-top=" transform:translate(0,-100%);" data-center-top="transform:translate(0,0)" class="product-wrap product02-wrap">
+                            <div class="product-num">
+                                <h3>02</h3>
+                            </div>
+                            <div class="product-name">
+                                <h3>SCENT WOOD CANDLE<small>頤和金桂</small></h3>
+                            </div>
+                            <div class="product-lead">
+                                <p>來自香調頤和金桂 暖秋夜晚的桂花香氣</p>
+                            </div>
+                        </div>
+                        <div data-bottom-top=" transform:translate(-110%,0);" data-center-top="transform:translate(20%,0)"  class="product-show product02-show"><img src="./images/product/product-detail-carosel/candle/product01.jpg"></div>
+                        <div data-bottom-top=" transform:translate(105%,-70%);" data-center-top="transform:translate(105%,-120%)" class="product-discription product02-discription">
+                            <p>秋日路過頤和園，百年老桂散發幽香。頤和金桂的開篇，是桂花獨有的甜杏味，很快桃花、紫羅蘭出場，給原本清亮的香氣描上一層淡粉的邊。桂花嬌嫩、花瓣薄，蒸餾不出花水和精油。挑揀乾淨的花瓣倒進用近兩百年時間摸索出的獨家配比的有機溶劑裡，過濾分離出淨膏再運回法國，加入酒精，分離出蠟質。過濾後，透過低溫冷凍，分離出淨油。一噸金桂只能萃取900克淨油，滴滴珍貴。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="product-main">
+                        <div data-bottom-top="opacity: 0" data-center-top=" opacity: 1" class="product-demo"><img src="./images/product/product-detail-carosel/candle/product02.jpg"></div>
+                        <div data-bottom-top=" transform:translate(-18%,-10%);" data-center-top="transform:translate(-18%,-70%)" class="product-main-txt ">
+                            <div class="main-title product02-main-title">
+                                <h5>DISCRIPTION</h5>
+                            </div>
+                            <div class="product-table">
+                                <dl class="product-detail">
+                                    <dt>Essential Oil:</dt>
+                                    <dd>含植物精油成分</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>Wood:</dt>
+                                    <dd>北美櫻桃木芯</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>Short smoke:</dt>
+                                    <dd>余煙短 不破壞香氣體驗</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>Full burning:</dt>
+                                    <dd>易燒平蠟池 減少掛壁</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>淨含量:</dt>
+                                    <dd>130g</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>燃燒時長:</dt>
+                                    <dd>20小時</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>擴香範圍:</dt>
+                                    <dd>封閉空間25平方公尺</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="product-buy product02-buy">
+                            <div data-bottom-top=" background-size:0" data-center-top="background-size:100%"  class="product-buy-bg product02-buy-bg"></div>
+                            <div class="box  product02-box">
+                                <h5>Osmanthus</h5>
+                                <div data-bottom-top=" transform:scale(0.5);opacity:0" data-center-top="transform:scale(1);opacity:1" class="product-buy-img">
+                                    <img src="./images/product/product-detail-carosel/candle/product03.png">
+                                </div>
+                                <div class="product-price">
+                                    <p>$ 1200 NTD</p>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+    
+                <!-- 三 -->
+                <div class="item">
+                    <div class="product-title">
+                        <div data-bottom-top=" transform:translate(0,-100%);" data-center-top="transform:translate(0,0)"  class="product02-wrap product03-wrap">
+                            <div class="product-num">
+                                <h3>03</h3>
+                            </div>
+                            <div class="product-name">
+                                <h3>SHEA DRY PERFUME<small>乳木果香膏</small></h3>
+                            </div>
+                            <div class="product-lead">
+                                <p>來自香氣昆侖煮雪 雪山溫暖木質調</p>
+                            </div>
+                        </div>
+                        <div data-bottom-top=" transform:translate(-110%,0);" data-center-top="transform:translate(30%,0)" class="product-show product02-show"><img src="./images/product/product-detail-carosel/perfume/product01.png"></div>
+                        <div data-bottom-top=" transform:translate(100%,-150%);" data-center-top="transform:translate(100%,-200%)"  class="product-discription product03-discription">
+                            <p>大雪封山，昆侖山腳下的木屋哩，柴火在爐壁裡劈啪作響。屋裡暖融融的，你望著窗外的雪山，飲一杯溫酒。抬袖時，聞到一股雪松香，精神世界落了一場雪。
+                            </p>
+                        </div>
+                    </div>
+                    <div class="product-main">
+                        <div data-bottom-top="opacity: 0" data-center-top=" opacity: 1" class="product-demo"><img src="./images/product/product-detail-carosel/perfume/product02.png"></div>
+                        <div data-bottom-top=" transform:translate(-18%,-40%);" data-center-top="transform:translate(-18%,-100%)" class="product-main-txt product03-main-txt">
+                            <div class="main-title product03-main-title">
+                                <h5>DISCRIPTION</h5>
+                            </div>
+                            <div class="product-table ">
+                                <dl class="product-detail">
+                                    <dt>主要成分:</dt>
+                                    <dd>檸檬果油</dd>
+                                    <dd>北非雪松樹皮油</dd>
+                                    <dd>新西蘭芝麻油籽</dd>
+                                    <dd>香葉天竺葵油</dd>
+                                    <dd>地中海柏木葉</dd>
+                                    <dd>歐刺柏果油</dd>
+                                    <dd>西非乳木果油葡萄籽油</dd>
+                                </dl>
+                                <dl class="product-detail">
+                                    <dt>容量:</dt>
+                                    <dd>3.5g</dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="product-buy product02-buy">
+                            <div data-bottom-top=" background-size:0" data-center-top="background-size:100%" class="product-buy-bg"></div>
+                            <div class="box  ">
+                                <h5>Cedarwood</h5>
+                                <div data-bottom-top=" transform:scale(0.5);opacity:0" data-center-top="transform:scale(1);opacity:1" class="product-buy-img">
+                                    <img src="./images/product/product-detail-carosel/perfume/product03.png">
+                                </div>
+                                <div class="product-price">
+                                    <p>$ 800 NTD</p>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <div class="title-bg feature-title">
+            <div class="title " id="featureline"><a href="#">Feature</a></div>
+        </div>
+        <section class="feature" id="section04">
+    
+            <div class="feature-group ">
+                <div class="feature01 ">
+                    <div class="demo">
+                        <h3>01</h3>
+                        <div class="demo-img"><img src="./images/feature/feature1.jpg">
+                        </div>
+                    </div>
+                    <div class="demo-txt" id="demo-txt01">
+                        <div class="overlay">
+                            <div class="first"></div>
+                            <p class="detail">
+                                每瓶金鐘罩都由匠人身處50多度的環境，在燃燒至1600+度高溫下吹製出流暢通透的作品。手做玻璃不斷受到流水線的衝擊，而每一位購買觀夏香薰的人，都在為留住這門手藝投票。</p>
+                        </div>
+                        <h3>Hand Crafted Glass <small>手做玻璃</small></h3>
+                        <a>view more</a>
+                    </div>
+                </div>
+                <div class="feature01 ">
+                    <div class="demo product02-demo bg-change">
+                        <h3>02</h3>
+                        <div class="demo-img product02-demo-img "><img src="./images/feature/feature2.jpg">
+                        </div>
+                    </div>
+                    <div class="demo-txt product02-demo-txt" id="demo-txt02">
+                        <div class="overlay">
+                            <div class="first"></div>
+                            <p class="detail">
+                                蠟杯材質外壁選擇使用宋代定窯的白瓷，數十年技齡老師傅手做燒窯。利於桌面，像素奶油堆砌而成，磨砂鈍感中不失細膩感。點燃時像一盞默默陪伴的燈，隱去光源，只給你一片柔光。</p>
+                        </div>
+                        <h3>Hand Crafted Ceramic<small>手作燒窯白瓷</small></h3>
+                        <a>view more</a>
+                    </div>
+                </div>
+                <div class="feature01">
+                    <div class="demo">
+                        <h3>03</h3>
+                        <div class="demo-img product03-demo-img"><img src="./images/feature/feature3.png">
+                        </div>
+                    </div>
+                    <div class="demo-txt" id="demo-txt03">
+                        <div class="overlay">
+                            <div class="first"></div>
+                            <p class="detail">
+                                用古代文人畫墨竹意演繹東方風情，選取"竹節"意象，沒有維妙維肖做成真實竹節型態，抽象成筆直的一小節。選取代表氣味的漢字印章，印刻在膏體表面，隨著使用時間慢慢模糊在你手中與使用者達成靜默互動。
+                            </p>
+                        </div>
+                        <h3>Hand Crafted Ceramic<small>手工製作瓷質感金屬</small></h3>
+                        <a>view more</a>
+                    </div>
+                </div>
+    
+            </div>
+        </section>
+        <div class="title-bg" id="contact-bg">
+            <div class="title" id="contactline"><a href="#">CONTACT</a></div>
+        </div>
+        <section class="contact " id="section05">
+    
+            <div class="footer-contact">
+    
+                <div class="footer-phone"><i class="fas fa-phone"></i>
+                    <p>0912-345-678</p>
+                </div>
+    
+    
+                <div class="footer-email"><i class="fas fa-envelope"></i>
+                    <p>summer@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-logo"><img src="./images/logo/logo-dark.svg"></div>
+                <div class="footer-navbar">
+                    <ul class="list-unstyled">
+                        <li class="footer-link"><a class="nav-link" href="#section02">CONCEPT</a></li>
+                        <li class="footer-link"><a  class="nav-link" href="#productline">PRODUCT</a></li>
+                        <li class="footer-link"><a  class="nav-link" href="#featureline">FEATURE</a></li>
+                        <li class="footer-link"><a  class="nav-link"
+                            href="#contactline" >CONTACT</a></li>
+                    </ul>
+                </div>
+    
+            </div>
+        </section>
+        <div class="social">
+            <div class="social-icon">
+                <div class="fb"><i class="fab fa-facebook-f"></i></div>
+                <div class="ig"><i class="fab fa-instagram"></i></div>
+                <div class="twitter"><i class="fab fa-twitter"></i></div>
+            </div>
+        </div>
+        <a onclick='window.scrollTo({top: 0, behavior: "smooth"});' type="button" class="to-top" id="myBtn">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+        <!-- <button onclick='window.scrollTo({top: 0, behavior: "smooth"});'>Scroll to Top</button> -->
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="./skrollr-master/src/skrollr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./skrollr-master/src/skrollr.js"></script>
+    <script>
+        var s = skrollr.init();
+        if ($(window).width() <= 375) {
+            skrollr.init().destroy();
+        }
+
+       
+        $('.circle').hover(function () {
+            $(this).addClass('scaleup')
+            $(this).prevUntil().addClass('moveleft').css('opacity', '0.5')
+            $(this).nextUntil().addClass('moveright').css('opacity', '0.5')
+
+        }, function () {
+            $(this).removeClass('scaleup')
+            $(this).prevUntil().removeClass('moveleft').css('opacity', '1')
+            $(this).nextUntil().removeClass('moveright').css('opacity', '1')
+        }
+        )
+
+        $('#txt04').addClass('opcacityfill');
+        $(document).click(function () {
+            $('#txt04').addClass('opcacityfill');
+        })
+        $('#rock').hover(function () {
+            $('#txt01').addClass('opcacityfill').siblings().addClass('opcacityblur');
+
+        }, function () {
+            $('#txt01').removeClass('opcacityfill').siblings().removeClass('opcacityblur');
+
+        }
+        )
+        $('#candle').hover(function () {
+            $('#txt02').addClass('opcacityfill').siblings().addClass('opcacityblur');
+        }, function () {
+            $('#txt02').removeClass('opcacityfill').siblings().removeClass('opcacityblur');
+        }
+        )
+        $('#soap').hover(function () {
+            $('#txt03').addClass('opcacityfill').siblings().addClass('opcacityblur');
+        }, function () {
+            $('#txt03').removeClass('opcacityfill').siblings().removeClass('opcacityblur');
+        }
+        )
+        $('#about-us').hover(function () {
+            $('#txt04').addClass('opcacityfill').siblings().addClass('opcacityblur');
+        }, function () {
+            $('#txt04').siblings().removeClass('opcacityblur');
+        }
+        )
+
+        $('#demo-txt01').hover(function () {
+     
+            $('#demo-txt01 .overlay').addClass('overlaymove')
+            $('#demo-txt01 .detail').css('color', 'white')
+            $('#demo-txt01 .overlay').nextUntil().addClass('opcacityblur')
+            // $('.demo-img img').addClass('bgmove')
+        }, function () {
+            $('.overlay').removeClass('overlaymove')
+            $('.overlay').nextUntil().removeClass('opcacityblur')
+            $('.detail').css('color', 'transparent')
+            // $('.demo-img img').removeClass('bgmove')
+        }
+        )
+        $('#demo-txt02').hover(function () {
+           
+            $('#demo-txt02 .overlay').addClass('overlaymove')
+            $('#demo-txt02 .detail').css('color', 'white')
+            $('#demo-txt02 .overlay').nextUntil().addClass('opcacityblur')
+            // $('.demo01-img img').addClass('bgmove')
+        }, function () {
+            $('.overlay').removeClass('overlaymove')
+            $('.overlay').nextUntil().removeClass('opcacityblur')
+            $('.detail').css('color', 'transparent')
+            // $('.demo01-img img').removeClass('bgmove')
+        }
+        )
+        $('#demo-txt03').hover(function () {
+           
+            $('#demo-txt03 .overlay').addClass('overlaymove')
+            $('#demo-txt03 .detail').css('color', 'white')
+            $('#demo-txt03 .overlay').nextUntil().addClass('opcacityblur')
+            // $('.demo02-img img').addClass('bgmove')
+        }, function () {
+            $('.overlay').removeClass('overlaymove')
+            $('.overlay').nextUntil().removeClass('opcacityblur')
+            $('.detail').css('color', 'transparent')
+            // $('.demo02-img img').removeClass('bgmove')
+        }
+        )
+        $('.footer-link').hover(function () {
+            
+            $(this).css('border-bottom', '1px solid #7C7877').css('margin-bottom', '30px').siblings()
+        }, function () {
+            $(this).css('border-bottom', '1px solid transparent').css('margin-bottom', '0').siblings()
+        }
+        )
+        $('.product-price').hover(function(){
+            $(this).addClass('hoverbuy');
+        },function(){
+            $(this).removeClass('hoverbuy');
+        }
+        )
+       
+
+       
+        mybutton = document.getElementById("myBtn");
+
+        
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 900 || document.documentElement.scrollTop > 900  ) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+        }
+
+       
+
+    </script>
+
+</body>
+
+</html>
